@@ -57,7 +57,7 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
-
+  console.log("Navbar user:", user);
   const logoutHandler = async () => {
     try {
       const res = await axios.get(`${USER_API_END_POINT}/logout`, {
@@ -82,7 +82,7 @@ const Navbar = () => {
         </Link>
 
         <nav className="hidden md:flex items-center gap-6 text-gray-800 text-lg font-semibold">
-          <NavLinks />
+          <NavLinks user={user} />
         </nav>
 
         <div className="hidden md:flex items-center gap-4">
@@ -154,7 +154,7 @@ const Navbar = () => {
       {menuOpen && (
         <div className="md:hidden bg-white px-4 pb-4 space-y-4 text-gray-800 font-semibold text-lg shadow-md">
           <div className="flex flex-col space-y-2">
-            <NavLinks />
+            <NavLinks user={user} />
           </div>
           <div className="border-t pt-4 flex flex-col gap-2">
             {!user ? (

@@ -10,8 +10,10 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 import messageRoute from "./routes/message.route.js";
+import path from "path";
 
 dotenv.config({});
+const _dirname = path.resolve();
 
 const app = express();
 const server = http.createServer(app);
@@ -62,6 +64,11 @@ io.on("connection", (socket) => {
       }
     }
   });
+});
+
+app.use(express.static(path.join(_dirname, "/frontend/dist")));
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(_dirname, "frontend", "dist", "index.html"));
 });
 
 server.listen(PORT, () => {
