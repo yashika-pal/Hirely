@@ -5,35 +5,35 @@ import { useSelector } from "react-redux";
 const SocketContext = createContext();
 
 export const useSocketContext = () => {
-    return useContext(SocketContext);
+  return useContext(SocketContext);
 };
 
 export const SocketContextProvider = ({ children }) => {
-    const [socket, setSocket] = useState(null);
-    const { user } = useSelector(store => store.auth);
+  const [socket, setSocket] = useState(null);
+  const { user } = useSelector((store) => store.auth);
 
-    useEffect(() => {
-        if (user) {
-            const socket = io("http://localhost:3000", {
-                query: {
-                    userId: user._id,
-                },
-            });
+  useEffect(() => {
+    if (user) {
+      const socket = io("https://hirely-1bui.onrender.com", {
+        query: {
+          userId: user._id,
+        },
+      });
 
-            setSocket(socket);
+      setSocket(socket);
 
-            return () => socket.close();
-        } else {
-            if (socket) {
-                socket.close();
-                setSocket(null);
-            }
-        }
-    }, [user]);
+      return () => socket.close();
+    } else {
+      if (socket) {
+        socket.close();
+        setSocket(null);
+      }
+    }
+  }, [user]);
 
-    return (
-        <SocketContext.Provider value={{ socket }}>
-            {children}
-        </SocketContext.Provider>
-    );
-}; 
+  return (
+    <SocketContext.Provider value={{ socket }}>
+      {children}
+    </SocketContext.Provider>
+  );
+};
