@@ -23,42 +23,69 @@ A full-stack job portal application built with React (Vite) for the frontend and
 
 ---
 
-### Clone the repository
+## Installation & Setup
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yashika-pal/Hirely
-cd Hirely
+git clone https://github.com/yashika-pal/Hirely.git
 ```
 
-### Backend Setup
+### 2. Backend Setup
+
+```bash
+cd backend
+npm install
+```
 
 Create a `.env` file inside the `backend` folder with the following content:
 
 ```env
 MONGO_URI=your_mongodb_connection_string
-SECRET_KEY=your_secret_key
+SECRET_KEY=your_jwt_secret_key
 CLOUD_NAME=your_cloudinary_cloud_name
 API_KEY=your_cloudinary_api_key
 API_SECRET=your_cloudinary_api_secret
 ```
 
+**For Development Mode:**
+Edit the following lines in `backend/index.js`:
+
+Line 29: Change the CORS origin
+
+```js
+origin: "http://localhost:5173",
+```
+
+Line 21: Change the Socket.io CORS origin
+
+```js
+origin: "http://localhost:5173",
+```
+
+```bash
+npm run dev
+```
+
+The backend server will run on `http:/localhost:3000`
+
 **Note:**
 
 - Replace the values above with your actual credentials.
 
-```bash
-cd backend
-npm install
-npm run dev
-```
+### 3. Frontend Setup
 
-### Frontend Setup
+#### Open a new terminal and navigate to frontend directory:
 
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
+
+The frontend will run on `http://localhost:5173`
+
+---
 
 ## License
 
