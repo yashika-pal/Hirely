@@ -34,6 +34,7 @@ git clone https://github.com/yashika-pal/Hirely.git
 ### 2. Backend Setup
 
 ```bash
+cd Hirely
 cd backend
 npm install
 ```
@@ -57,7 +58,7 @@ Line 33: Change the CORS origin
 origin: "http://localhost:5173",
 ```
 
-Line 49: Change the Socket.io corsOptions origin
+Line 49: Change the corsOptions origin
 
 ```js
 origin: "http://localhost:5173",
