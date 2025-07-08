@@ -1,7 +1,18 @@
+import dotenv from "dotenv";
+import path from "path";
+dotenv.config({ path: path.resolve("./backend/.env") });
+
+import { v2 as cloudinary } from "cloudinary";
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
+
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import dotenv from "dotenv";
+//import dotenv from "dotenv";
 import http from "http";
 import { Server } from "socket.io";
 import connectDB from "./utils/db.js";
@@ -10,9 +21,9 @@ import companyRoute from "./routes/company.route.js";
 import jobRoute from "./routes/job.route.js";
 import applicationRoute from "./routes/application.route.js";
 import messageRoute from "./routes/message.route.js";
-import path from "path";
+//import path from "path";
 
-dotenv.config({});
+//dotenv.config({ path: path.resolve("./backend/.env") });
 const _dirname = path.resolve();
 
 const app = express();
