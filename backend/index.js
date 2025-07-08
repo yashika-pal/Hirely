@@ -30,7 +30,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://hirely-1bui.onrender.com",
+    origin: process.env.PRODUCTION_URL || "http://localhost:5173",
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -46,7 +46,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 const corsOptions = {
-  origin: "https://hirely-1bui.onrender.com",
+  origin: process.env.PRODUCTION_URL || "http://localhost:5173",
   credentials: true,
 };
 

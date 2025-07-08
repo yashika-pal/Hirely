@@ -12,9 +12,14 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
   const { user } = useSelector((store) => store.auth);
 
+  const SOCKET_URL =
+    import.meta.env.MODE === "development"
+      ? import.meta.env.VITE_API_BASE_URL_DEV
+      : import.meta.env.VITE_API_BASE_URL_PROD;
+
   useEffect(() => {
     if (user) {
-      const socket = io("https://hirely-1bui.onrender.com", {
+      const socket = io(SOCKET_URL, {
         query: {
           userId: user._id,
         },
@@ -29,7 +34,7 @@ export const SocketContextProvider = ({ children }) => {
         setSocket(null);
       }
     }
-  }, [user]);
+  }, [user, SOCKET_URL]);
 
   return (
     <SocketContext.Provider value={{ socket }}>
