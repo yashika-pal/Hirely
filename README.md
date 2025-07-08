@@ -51,13 +51,13 @@ API_SECRET=your_cloudinary_api_secret
 **For Development Mode:**
 Edit the following lines in `backend/index.js`:
 
-Line 29: Change the CORS origin
+Line 33: Change the CORS origin
 
 ```js
 origin: "http://localhost:5173",
 ```
 
-Line 21: Change the Socket.io CORS origin
+Line 49: Change the Socket.io corsOptions origin
 
 ```js
 origin: "http://localhost:5173",
